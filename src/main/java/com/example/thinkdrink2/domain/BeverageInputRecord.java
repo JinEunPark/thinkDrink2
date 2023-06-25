@@ -1,5 +1,7 @@
 package com.example.thinkdrink2.domain;
 
+import com.example.thinkdrink2.domain.beverage.CafeBeverage;
+import com.example.thinkdrink2.domain.beverage.ReadyBeverage;
 import jakarta.persistence.*;
 import org.springframework.data.relational.core.mapping.Embedded;
 
@@ -9,8 +11,11 @@ public class BeverageInputRecord extends BaseTime{
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long beverageInputRecodeId;
 
-    @Embedded.Nullable //영양정보의 스냅샷
-    BeverageInformation beverageInformation;
+    @ManyToOne
+    CafeBeverage cafeBeverage;
+
+    @ManyToOne
+    ReadyBeverage readyBeverage;
 
     @ManyToOne
     UserEntity userEntity;
