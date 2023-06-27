@@ -15,7 +15,7 @@ public class UserEntity {
     @Embedded
     HealthInformation healthInformation;
 
-    @OneToMany(mappedBy = "userEntity")
+    @OneToMany(mappedBy = "userEntity", orphanRemoval = true)
     List<BeverageInputRecord> inputRecodes = new ArrayList<>();
 
 }
